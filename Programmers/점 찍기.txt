@@ -1,0 +1,13 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/140107
+
+// 처음 2중for문으로 모든 경우를 탐색하여 시간초과가 났다.
+// 각 경우의 해당 갯수를 찾아서(해당 i일때 들어갈 수 있는 갯수) 더하면, 하나의 for문으로 해결가능했다.
+class Solution {
+    public long solution(int k, int d) {
+        long answer = 0;
+        for(int i=0; i<=d; i=i+k){
+            answer += (int) (Math.sqrt(Math.pow(d,2)-Math.pow(i,2))/k) +1;
+        }
+        return answer;
+    }
+}
