@@ -1,0 +1,47 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/42587
+
+// 큐를 사용하여 해결한 문제
+// 프린터 인쇄 요청 순서인 q와 해당 location을 맞춰주기위한 loca 두개의 큐로 
+// 같은 동작을 시켜 해결했음.
+import java.util.*;
+
+class Solution {
+    public int solution(int[] priorities, int location) {
+        int answer = 0;
+        
+        Queue<Integer> q = new LinkedList<>();
+        Queue<Integer> loca = new LinkedList<>();
+        for(int i=0; i<priorities.length; i++){
+            q.add(priorities[i]);
+            if(location == i){
+                loca.add(location);
+            }else {
+                loca.add(-1);
+            }
+        }
+        
+        while(!q.isEmpty()){
+            int max = -1;
+            int max_loca = -1;
+            int i = 0;
+            for(int k : q){
+                if(max<k){
+                    max = k;
+                    max_loca = i;
+                }
+                i++;
+            }
+            if(q.peek() >= max){
+                answer ++;        
+                q.remove();
+                if(loca.remove() != -1){
+                    break;
+                }
+            }else {
+                q.add(q.remove());
+                loca.add(loca.remove());
+            }
+        }
+        return answer;
+    }
+}
