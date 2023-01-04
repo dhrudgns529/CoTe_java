@@ -1,0 +1,27 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/43165
+
+// dfs를 사용하여 풀이. 
+// answer를 안에서 변화시킬 생각을 안하고 전역변수로 사용한 것이 살짝 아쉬움.
+class Solution {
+    static int answer = 0;
+    public int solution(int[] numbers, int target) {
+        
+        dfs(numbers, target, 0, 0); // 배열, 만들수, 시작값, 인덱스
+        
+        return answer;
+    }
+    
+    int dfs(int[] numbers, int target, int result, int index){
+        if(index == numbers.length){
+            if(target == result){
+                answer++;
+                return 0;
+            }
+            return 0;
+        }
+        dfs(numbers, target, result+numbers[index], index+1);
+        dfs(numbers, target, result-numbers[index], index+1);
+        
+        return 0;
+    }
+}
