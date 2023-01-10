@@ -1,0 +1,25 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/68644
+
+// 2중 for문을 통해 같은 인덱스인 경우는 제외하고 ArrayList에 해당 값을 추가(있는 경우는 추가X)
+// 처음에 numbers에서 내림차순을 해서 ArrayList의 내림차순 정렬이 되어지지 않음.(2중 for문이다보니 값에 앞에가 더클수도 있음) 그래서 마지막 ArrayList를 내림차순했음.
+
+import java.util.*;
+
+class Solution {
+    public ArrayList<?> solution(int[] numbers) {
+        ArrayList<Integer> answer = new ArrayList<>(); 
+        for(int i=0; i<numbers.length-1; i++){
+            for(int j=1; j<numbers.length; j++){
+                if(i == j){
+                    continue;
+                }
+                if (!answer.contains(numbers[i]+numbers[j])){
+                    answer.add(numbers[i]+numbers[j]);
+                }   
+            }
+            
+        }
+        Collections.sort(answer);
+        return answer;
+    }
+}
