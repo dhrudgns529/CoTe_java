@@ -1,0 +1,25 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/12909
+
+// '('와 ')'의 갯수를 비교해서 닫는 괄호(')')가 먼저 나올 경우 false 리턴.
+// 각 갯수를 비교하지 않고 하나의 변수로 '('는 ++ ')' -- 해서 변수가 0보다 작은 경우 false 리턴도 가능.
+class Solution {
+    boolean solution(String s) {
+
+        int a = 0; // '('의 갯수
+        int b = 0; // ')'의 갯수
+        for (int i=0; i<s.length(); i++){
+            if(s.charAt(i) == '('){
+                a++;
+            }else {
+                b++;
+            }
+            if(b > a){
+                return false;
+            }
+        }
+        if(a == b){
+            return true;
+        }
+        return false;
+    }
+}
